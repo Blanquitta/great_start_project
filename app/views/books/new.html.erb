@@ -1,0 +1,98 @@
+  <%= form_with(model: @book, local: true) do |form| %>
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :author %>
+    <%= form.text_field :author %>
+  </div>
+
+  <div class="field">
+    <%= form.label :published_date %>
+    <%= form.date_field :published_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Create Book" %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', books_path %>
+
+<h1>Login</h1>
+
+<%= form_with(url: login_path, local: true) do |form| %>
+  <% if flash[:alert] %>
+    <div class="alert alert-danger"><%= flash[:alert] %></div>
+  <% end %>
+
+  <div>
+    <%= form.label :username %>
+    <%= form.text_field :username, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :password %>
+    <%= form.password_field :password, required: true %>
+  </div>
+
+  <div>
+    <%= form.submit 'Login' %>
+  </div>
+<% end %>
+
+ # use this for the model book 
+ 
+<%= form_with(model: book, local: true) do |form| %>
+  <% if book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+      <ul>
+        <% book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :author %>
+    <%= form.text_field :author %>
+  </div>
+
+  <div class="field">
+    <%= form.label :coding_class_id, "Select Course" %>
+    <% if @courses.present? %>
+      <%= form.select :coding_class_id,
+          options_from_collection_for_select(@courses, :id, :title, book.coding_class_id),
+          { prompt: "Select Lesson" },
+          { class: "form-control" } %>
+    <% else %>
+      <p>No courses available. Please create one first.</p>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+ 
