@@ -48,5 +48,60 @@ before_action :set_book, only: %i[ show edit update destroy ]
     end
 end
 
+class BooksController < ApplicationController
+  def new
+  end
 
+  def create
+  end
 
+  def destroy
+  end
+end
+
+def create
+  user = User.find_by(books: params[:books])
+
+  if user
+    # Success
+  else
+    flash.now[:alert] = 'Invalid username or password.'
+    render :new
+  end
+end
+
+def create
+  user = User.find_by(books: params[:books])
+
+  if user
+    # Success
+  else
+    flash.now[:alert] = 'Invalid username or password.'
+    render :new
+  end
+end
+
+def create
+  user = User.find_by(books: params[:books])
+
+  if user
+    if user.authenticate(params[:password])
+      # Success
+
+    else
+      flash.now[:alert] = 'Invalid book or password.'
+      render :new
+    end
+  else
+    flash.now[:alert] = 'Invalid book or password.'
+    render :new
+  end
+end
+
+#role 
+def require_admin
+    if set_books[:role] != 'admin'
+      flash[:alert] = 'You do not have access to that page'
+      redirect_to root_path
+    end
+  end

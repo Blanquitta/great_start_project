@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get "dashboard/index"
+  get 'login', to: 'books#new'
+post 'login', to: 'books#create'
+delete 'logout', to: 'books#destroy'
+ get "dashboard", to: "dashboard#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -13,3 +18,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :books
 end
+
+# get 'login', to: 'books#new'
+# post 'login', to: 'books#create'
+# delete 'logout', to: 'books#destroy'
