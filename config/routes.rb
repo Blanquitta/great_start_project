@@ -17,7 +17,22 @@ delete 'logout', to: 'books#destroy'
   # Defines the root path route ("/")
   # root "posts#index"
   resources :books
+
+  
+      
+    get '/courses', to: 'courses#index'
+    get '/courses/:course_id/enrollments', to: 'enrollments#index'
+    post '/students', to: 'students#create'
+    post '/books', to: 'books#create'  
+  end
 end
+    
+  
+   namespace :api do
+    namespace :v1 do
+      get '/courses', to: 'courses#index'
+    end
+  end
 
 # get 'login', to: 'books#new'
 # post 'login', to: 'books#create'

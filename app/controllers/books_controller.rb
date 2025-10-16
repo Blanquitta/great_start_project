@@ -105,3 +105,30 @@ def require_admin
       redirect_to root_path
     end
   end
+
+  def create
+  author = Author.find_by(name: params[:author_name])
+  @book = Book.new(book_params)
+  @book.author = author
+  @book.save
+end
+#   module Api
+#   module V1
+#     class BooksController < ApplicationController
+#       def create
+#         book = Book.new(book_params)
+#         if book.save
+#           render json: book, status: :created
+#         else
+#           render json: { errors: book.errors.full_messages }, status: :unprocessable_entity
+#         end
+#       end
+
+#       private
+
+#       def book_params
+#         params.require(:book).permit(:title, :author, :publisher, :reviews, :average_rating)
+#       end
+#     end
+#   end
+# end

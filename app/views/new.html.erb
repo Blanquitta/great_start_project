@@ -1,0 +1,44 @@
+<!-- app/views/books/new.html.erb -->
+<h1>New Book</h1>
+
+<%= render 'form', book: @book %>
+
+<%= link_to 'Back', books_path %>
+ <title>Create Books</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    label { display: block; margin-top: 10px; }
+    #bookDisplay { margin-top: 20px; padding: 10px; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+
+  <div>
+    <%= f.label :title %><br/>
+    <%= f.text_field :title, required: true %>
+  </div>
+
+  <div>
+    <%= f.label :author %><br/>
+    <%= f.text_field :author, required: true %>
+  </div>
+
+  <div>
+    <%= f.label :published %><br/>
+    <%= f.text_field :published %>
+  </div>
+
+  <div>
+    <%= f.label :reviews %><br/>
+    <%= f.text_area :reviews, rows: 4 %>
+  </div>
+
+  <div>
+    <%= f.label :average_rating %><br/>
+    <%= f.number_field :average_rating, step: 0.1, min: 0, max: 5 %>
+  </div>
+
+  <div style="margin-top:12px">
+    <%= f.submit %>
+  </div>
+<% end %>

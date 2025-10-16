@@ -5,6 +5,8 @@ class Book < ApplicationRecord
     has_many :reviews, dependent: :destroy 
     
     validates :title, presence: true, uniqueness: true
-    validates :published_date, presence: true
+    # validates :published_year, presence: true
     validates :author, presence: true
- end
+end
+
+ 
