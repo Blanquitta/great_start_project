@@ -1,6 +1,5 @@
 class BooksController < ApplicationController
-
-before_action :set_book, only: %i[ show edit update destroy ]
+  before_action :set_book, only: %i[ show edit update destroy ]
 
   def index
     @books = Book.all
@@ -8,16 +7,16 @@ before_action :set_book, only: %i[ show edit update destroy ]
 
   def show
   end
-
+  
   def new
     @book = Book.new
   end
 
-  def edit
+  def edit 
   end
 
   def create
-    @book = Book.new(book_params)
+    @book = Book.new(book_params) 
     if @book.save
       redirect_to @book, notice: "Book was successfully created."
     else
@@ -39,96 +38,12 @@ before_action :set_book, only: %i[ show edit update destroy ]
   end
 
   private
-    def set_book
-      @book = Book.find(params[:id])
-    end
-
-    def book_params
-      params.require(:book).permit(:title, :author, :published_date)
-    end
-end
-
-class BooksController < ApplicationController
-  def new
+  def set_book
+    @book = Book.find(params[:id])
   end
 
-  def create
-  end
-
-  def destroy
+  def book_params
+    # params.require(:book).permit(:title, :author)
+    params.require(:book).permit(:title, :author, :author_id) # all necessary keys are here!
   end
 end
-
-def create
-  user = User.find_by(books: params[:books])
-
-  if user
-    # Success
-  else
-    flash.now[:alert] = 'Invalid username or password.'
-    render :new
-  end
-end
-
-def create
-  user = User.find_by(books: params[:books])
-
-  if user
-    # Success
-  else
-    flash.now[:alert] = 'Invalid username or password.'
-    render :new
-  end
-end
-
-def create
-  user = User.find_by(books: params[:books])
-
-  if user
-    if user.authenticate(params[:password])
-      # Success
-
-    else
-      flash.now[:alert] = 'Invalid book or password.'
-      render :new
-    end
-  else
-    flash.now[:alert] = 'Invalid book or password.'
-    render :new
-  end
-end
-
-#role 
-def require_admin
-    if set_books[:role] != 'admin'
-      flash[:alert] = 'You do not have access to that page'
-      redirect_to root_path
-    end
-  end
-
-  def create
-  author = Author.find_by(name: params[:author_name])
-  @book = Book.new(book_params)
-  @book.author = author
-  @book.save
-end
-#   module Api
-#   module V1
-#     class BooksController < ApplicationController
-#       def create
-#         book = Book.new(book_params)
-#         if book.save
-#           render json: book, status: :created
-#         else
-#           render json: { errors: book.errors.full_messages }, status: :unprocessable_entity
-#         end
-#       end
-
-#       private
-
-#       def book_params
-#         params.require(:book).permit(:title, :author, :publisher, :reviews, :average_rating)
-#       end
-#     end
-#   end
-# end

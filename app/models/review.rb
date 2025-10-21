@@ -5,11 +5,6 @@ class Review < ApplicationRecord
 
     after_create :update_book_rating
 
-    # private 
-    # def update_book_rating
-    #     book.update(average_rating: book,reviews.average(rating)) 
-    # end  
-
     def update_book_rating(book)
      average = book.reviews.average(:rating)
      book.update(average_rating: average)

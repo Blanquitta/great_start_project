@@ -1,9 +1,30 @@
 Rails.application.routes.draw do
-  get "dashboard/index"
-  get 'login', to: 'books#new'
-post 'login', to: 'books#create'
-delete 'logout', to: 'books#destroy'
- get "dashboard", to: "dashboard#index"
+  resource :session
+  resources :passwords, param: :token
+  # resource :session
+  # resources :books, param: :token
+  
+
+ root "books#index"
+
+ get '/books', to: 'books#index'
+ get '/books/new', to: 'books#new'
+ get '/books/id', to: 'books#show'
+
+ get '/reviews', to: 'reviews#index'
+ get '/reviews/new', to: 'reviews#new'
+ get '/reviews/id', to: 'reviews#show'
+ post '/books', to: 'books#create'  
+#  post '/login', to: 'dashboard#login'
+ get '/dashboard', to: 'dashboard#index'
+ get '/forms', to: 'form#index'
+ get '/forms/new', to: 'form#new'
+ get '/forms/id', to: 'form#show'
+
+
+ resources :forms, controller: 'form', only: [:index]
+ 
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -16,24 +37,10 @@ delete 'logout', to: 'books#destroy'
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :books
-
-  
-      
-    get '/courses', to: 'courses#index'
-    get '/courses/:course_id/enrollments', to: 'enrollments#index'
-    post '/students', to: 'students#create'
-    post '/books', to: 'books#create'  
+    resources :books 
   end
-end
+
     
   
-   namespace :api do
-    namespace :v1 do
-      get '/courses', to: 'courses#index'
-    end
-  end
 
-# get 'login', to: 'books#new'
-# post 'login', to: 'books#create'
-# delete 'logout', to: 'books#destroy'
+

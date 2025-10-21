@@ -1,14 +1,30 @@
-<h1> New book  </h1>
+<h1> books </h1>
 
-# <ul>
-#     <%= @books.each do |task|%>
-#     <li>
-#         <%= task.title %>
-#         
-#      <li>
-#      <%end%>
-# </ul>
+ <ul>
+     <%= @books.each do |book|%>
+     <li>
+ 
+          <a href="/books/<%=book.id%>">  
+             <%= book.title %>
+             <% if @book.author %>
+  <h2><%= @book.author.name%> </h2>
+ 
+           <a>
+          
+          <a href="/reviews/<%=reviews %>">
+             <%= book.reviews %>
+           </a> 
+     </li>
+     <%end/%>
+     </ul>
 
+    
+
+<% @books.each do |book| %>
+  <% 3.times do %>
+    <%= render partial: "book", locals: { book: book }  %>
+  <% end /%> 
+<% end /%>
 
 
  

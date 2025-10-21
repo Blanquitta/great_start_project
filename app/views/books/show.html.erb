@@ -1,6 +1,20 @@
-<% render @Book %>
-<h1><%= @book.title %></h1>
-<p>Author: <%= @book.author %></p>
-<p>reviews: <%= @book.reviews.count%><p>
 
-<p>Published: <%= @book.published_date %></p>S
+<h1><%= @book.title %></h1>
+<hr>
+
+<h2><%= @book.author.name i %></h2>
+
+<hr>
+ <%= link_to 'Edit', edit_book_path(@book)%>
+<h3><% @book.reviews.each do |review| %>
+    <div>
+      Content: <%= review.content %>
+      <br>
+      Rating: <% review.rating %>
+      
+         
+         <%= link_to 'Edit', edit_book_path(@book)%>
+    </div>
+    <% end%>
+<hr>
+
