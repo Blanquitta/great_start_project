@@ -1,0 +1,24 @@
+<h1>Books</h1>
+
+<%= book_with model: @book do |form| %>
+
+    <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %><br>
+  </div>
+
+  <div class="field">
+    <%= form.label :author_id %>
+    <%= f.collection_select :author_id, Author.all, :id, :name %>
+    <%= form.text_field :author %>
+
+    
+  <%= form.collection_select :author_id, Author.all, :id, :name, prompt: "Select an author" %>
+
+
+    <div class="actions">
+        <%= form.submit "Create Book" %>
+        </div>
+<% end %>
+
+ 

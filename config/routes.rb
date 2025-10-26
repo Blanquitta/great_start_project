@@ -1,4 +1,30 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
+  # resource :session
+  # resources :books, param: :token
+  
+
+ root "books#index"
+
+ get '/books', to: 'books#index'
+ get '/books/new', to: 'books#new'
+ get '/books/id', to: 'books#show'
+
+ get '/reviews', to: 'reviews#index'
+ get '/reviews/new', to: 'reviews#new'
+ get '/reviews/id', to: 'reviews#show'
+ post '/books', to: 'books#create'  
+#  post '/login', to: 'dashboard#login'
+ get '/dashboard', to: 'dashboard#index'
+ get '/forms', to: 'form#index'
+ get '/forms/new', to: 'form#new'
+ get '/forms/id', to: 'form#show'
+
+
+ resources :forms, controller: 'form', only: [:index]
+ 
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -11,4 +37,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-end
+    resources :books 
+  end
+
+    
+  
+
+
