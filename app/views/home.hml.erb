@@ -4,6 +4,8 @@
 
 <% link_to "login", new_session_path %>
 
+<%link_to "logout", new_session_path%>
+
 <p>
 
  Welcome, <%Current.user.eamil %>!
@@ -11,3 +13,4 @@
 <%= button_to "logout", session_path, method: :delete %>
 
 </div>
+
