@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resource :session
-  resources :passwords, param: :token
-  # resource :session
-  # resources :books, param: :token
+  resources :password, param: :token
+   resources :authors do
+    resources :books
   
 
  root "books#index"
@@ -22,6 +22,8 @@ Rails.application.routes.draw do
  get '/forms/id', to: 'form#show'
 
 
+
+
  resources :forms, controller: 'form', only: [:index]
  
 
@@ -36,8 +38,13 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
+ root "page#home"
+ get '/dahsboard', to: 'pages#index'
+
+
   # root "posts#index"
     resources :books 
+   end
   end
 
     
