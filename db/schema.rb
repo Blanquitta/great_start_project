@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_21_182841) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_05_232433) do
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -25,6 +25,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_21_182841) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "average_rating", default: "0.0"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_books_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -53,6 +55,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_21_182841) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "books", "users"
   add_foreign_key "reviews", "books"
   add_foreign_key "sessions", "users"
 end

@@ -1,48 +1,38 @@
 Rails.application.routes.draw do
   resource :session
   resources :password, param: :token
-   resources :authors do
+  resources :authors do
     resources :books
+    root "books#index"
+
+    get '/books', to: 'books#index'
+    get '/books/new', to: 'books#new'
+    get '/books/id', to: 'books#show'
+
+    get '/reviews', to: 'reviews#index'
+    get '/reviews/new', to: 'reviews#new'
+    get '/reviews/id', to: 'reviews#show'
+    post '/books', to: 'books#create'  
+    #  post '/login', to: 'dashboard#login'
+    get '/dashboard', to: 'dashboard#index'
+    get '/forms', to: 'form#index'
+    get '/forms/new', to: 'form#new'
+    get '/forms/id', to: 'form#show'
+    resources :forms, controller: 'form', only: [:index]
+    # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+    # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
+    # Can be used by load balancers and uptime monitors to verify that the app is live.
+    get "up" => "rails/health#show", as: :rails_health_check
+
+    # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
+    # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+    # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+
+    # Defines the root path route ("/")
   
-
- root "books#index"
-
- get '/books', to: 'books#index'
- get '/books/new', to: 'books#new'
- get '/books/id', to: 'books#show'
-
- get '/reviews', to: 'reviews#index'
- get '/reviews/new', to: 'reviews#new'
- get '/reviews/id', to: 'reviews#show'
- post '/books', to: 'books#create'  
-#  post '/login', to: 'dashboard#login'
- get '/dashboard', to: 'dashboard#index'
- get '/forms', to: 'form#index'
- get '/forms/new', to: 'form#new'
- get '/forms/id', to: 'form#show'
-
-
-
-
- resources :forms, controller: 'form', only: [:index]
- 
-
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
-
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-
-  # Defines the root path route ("/")
- root "page#home"
- get '/dahsboard', to: 'pages#index'
-
-
-  # root "posts#index"
+    get '/dahsboard', to: 'pages#index'
+    # root "posts#index"
     resources :books 
    end
   end
