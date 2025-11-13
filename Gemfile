@@ -62,3 +62,5 @@ group :test do
   gem "selenium-webdriver"
   gem "rspec"
 end
+
+gem "rspec-rails", "~> 8.0"

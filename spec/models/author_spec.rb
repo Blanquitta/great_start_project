@@ -1,5 +1,3 @@
-require "test_helper"
-
 RSpec.describe Book, type: :model do
   it 'returns the full name of the author' do
     author = Author.create(name: 'Dale Carnegie')
@@ -16,7 +14,7 @@ RSpec.describe Book, type: :model do
   end
 end
   Rspec.describe (Model), type: :model do
-#test code goes here
+    
 end
 2:29
 Book cases to test:
@@ -25,23 +23,6 @@ Reviews
 2:30
 rating
 
-Author Model:
-# - name
-#Book Model:
-# - author
-# - reviews
-# - publisher
-# - title
-# - user_id
-# - average_rating
-# Global Variable:
-#  @foo = Foo.create(variable1: "Information")
-#Local Variable:
-#  let(:foo) {
-#    Foo.create(
-#      variable1: "Information"
-#    )
-#  }
 RSpec.describe Author, type: :model do
   #create the models associated with the tests
   @author =  Author.create(
@@ -61,10 +42,3 @@ RSpec.describe Author, type: :model do
     expect(creator.full_name).to eq 'Dale Carnegie'
   end
 end
-
-
-
-
-
-
-
