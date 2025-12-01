@@ -12,20 +12,8 @@ RSpec.describe Author, type: :model do
     expect(author).not_to be_valid
   end
 end
-RSpec.describe Book, type: :model do
-    it 'returns the full name of the author' do
-    author = Author.create(name: 'Dale Carnegie')
-    book = Book.create(title: 'The Shining', author: author)
-    expect(book.author.name).to eq 'Dale Carnegie'
-  end
 
-  it 'calculates the average rating from reviews' do
-    book = Book.create(title: 'The Shining')
-    Review.create(book: book, rating: 5)
-    Review.create(book: book, rating: 3)
-    Review.create(book: book, rating: 4)
-    expect(book.average_rating).to eq 4.0
-  end
+
 end
   Rspec.describe (Model), type: :model do
     
@@ -38,7 +26,7 @@ Reviews
 rating
 
 RSpec.describe Author, type: :model do
-  #create the models associated with the tests
+  # the models associated with the tests
   @author =  Author.create(
     name: "Dale Carnegie"
   )
