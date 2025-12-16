@@ -8,3 +8,82 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+.navbar {
+  background-color: #3b82f6; /* blue */
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
+}
+
+.navbar-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar-links a:hover {
+  text-decoration: underline;
+}
+
+/* ========== PAGE CONTENT ========== */
+.content {
+  margin: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.notice {
+  background-color: #d1fae5;
+  border-left: 4px solid #10b981;
+  padding: 10px;
+  margin-bottom: 20px;
+  color: #065f46;
+}
+
+/* ========== BUTTONS ========== */
+.button, input[type="submit"] {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.button:hover, input[type="submit"]:hover {
+  background-color: #2563eb;
+}
+
+/* ========== FORMS ========== */
+form div {
+  margin-bottom: 10px;
+}
+
+input[type="text"], textarea, select, input[type="number"] {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

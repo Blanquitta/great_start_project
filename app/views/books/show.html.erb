@@ -1,0 +1,21 @@
+
+<h1><%= @book.title %></h1>
+<hr>
+
+<h2><%= @book.author.name i %></h2>
+
+<hr>
+ <%= link_to 'Edit', edit_book_path(@book)%>
+<h3><% @book.reviews.each do |review| %>
+    <div>
+      Content: <%= review.content %>
+      <br>
+      Rating: <% review.rating %>
+      
+         
+         <%= link_to 'Edit', edit_book_path(@book)%>
+         <p><strong>Created by:</strong> <%= @book.user.name if @book.user %></p>
+    </div>
+    <% end%>
+<hr>
+

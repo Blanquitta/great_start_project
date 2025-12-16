@@ -7,3 +7,5 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+# author = Author.create(name: "Dale Carnagie")
+# Book.create(title: "How to Win Friends", author: author)

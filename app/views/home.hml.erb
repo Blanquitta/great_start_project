@@ -1,0 +1,13 @@
+<div class="space-y-12">
+
+<h1>home</h1>
+
+<% link_to "login", new_session_path %>
+
+<p>
+
+ Welcome, <%Current.user.eamil %>!
+
+<%= button_to "logout", session_path, method: :delete %>
+
+</div>
