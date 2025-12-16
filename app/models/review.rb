@@ -1,5 +1,5 @@
 class Review < ApplicationRecord
-    belongs_to :book 
+    belongs_to :book
     validates :content, presence: true
     validates :rating, presence: true, inclusion: { in: 1..5 }
 
@@ -8,5 +8,5 @@ class Review < ApplicationRecord
     def update_book_rating(book)
      average = book.reviews.average(:rating)
      book.update(average_rating: average)
-    end 
+    end
 end

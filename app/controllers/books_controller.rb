@@ -7,16 +7,16 @@ class BooksController < ApplicationController
 
   def show
   end
-  
+
   def new
     @book = Book.new
   end
 
-  def edit 
+  def edit
   end
 
   def create
-    @book = Book.new(book_params) 
+    @book = Book.new(book_params)
     if @book.save
       redirect_to @book, notice: "Book was successfully created."
     else
